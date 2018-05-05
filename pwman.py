@@ -2,7 +2,9 @@ import hashlib,sys
 ALPHABET = ('abcdefghijklmnopqrstuvwxyz'
 			 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 			 '0123456789')
-SECRET_KEY = ''
+
+with open('secret.txt','r',encoding='utf-8') as f:
+	SECRET_KEY = f.readline()
 
 def getHexDigest(salt,plaintext):
 	content = salt + plaintext
