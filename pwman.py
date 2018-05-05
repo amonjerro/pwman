@@ -6,7 +6,6 @@ SECRET_KEY = ''
 
 def getHexDigest(salt,plaintext):
 	content = salt + plaintext
-	
 	return hashlib.sha256(content.encode('utf-8')).hexdigest()
 
 def makePassword(service,master):
@@ -22,8 +21,8 @@ if sys.argv[1] == 'help':
 if len(sys.argv) == 4 and sys.argv[3] == 'sym':
 	ALPHABET += '!@#$%^&*()-_'
 
-def password(service,plaintext,length=10,alphabet=ALPHABET):
-	raw_hexdigest = makePassword(service,plaintext)
+def password(service,masterPassword,length=10,alphabet=ALPHABET):
+	raw_hexdigest = makePassword(service,masterPassword)
 	num = int(raw_hexdigest,16)
 	num_chars = len(alphabet)
 	chars = []
